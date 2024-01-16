@@ -68,9 +68,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					//la variable pasaria a ser una promesa por el fetch
 					let response = await fetch("https://www.swapi.tech/api/planets") // completar la url deacuerdo a la API
 					let data = await response.json() // convertir picode a Json--> tipo de dato JS
+
 					console.log();
 					// for para recorrer
-					setStore({ planets: data.results }) // Guardar los personajes en el store, ,result porque la API muestra algo antes de consultar los personajes
+					setStore({ planets: data.results }) // Guardar los personajes en el store ,result porque la API muestra algo antes de consultar los personajes
 		
 				} catch (error) {
 					console.log(error);
