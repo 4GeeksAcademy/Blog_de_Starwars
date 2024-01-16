@@ -24,6 +24,7 @@ const injectContext = PassedComponent => {
 		useEffect(() => {
 			state.actions.loadCharacters(); // llamar la funcion loadCharacters
 			state.actions.loadCharacter();
+			state.actions.loadPlanets();
 
 			/**
 			 * EDIT THIS!

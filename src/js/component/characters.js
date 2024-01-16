@@ -2,25 +2,21 @@ import React, { useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
 
-
 const Character = () => {
     const { store, actions } = useContext(Context);
 
     console.log(store.characters, "impresizo");
     
     let {uid} = useParams()
-    
 
     return (
 
-        <div>
-            {/*  */}
-            
+        <div style={{ display: 'flex', flexDirection: 'row', overflowX: 'auto' }}>
             {store.characters.map((element, index) => {
                 return (
                     <div className="container" key={element.uid}>
                         <div className="card" style={{ width: "18rem" }}>
-                            <img src="https://thorntons-investments.co.uk/wp-content/uploads/2017/08/400x200.png" className="card-img-top" alt="..." />
+                            <img src={`https://starwars-visualguide.com/assets/img/characters/${element.uid}.jpg`}className="card-img-top" alt="..." />
                             <div className="card-body">
                                 <h5 className="card-title"> {element.name}</h5>
                                 {/* properties.haircolor */}
@@ -32,10 +28,10 @@ const Character = () => {
                             </div>
                         </div>
                     </div>
+
                 )
             }
             )}
-
         </div>
     )
 }

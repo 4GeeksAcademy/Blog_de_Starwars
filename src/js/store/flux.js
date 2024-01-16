@@ -27,6 +27,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			character: {
 
+			},
+			planets: [{
+
+			}],
+			planet: {
+
 			}
 		},
 		actions: {
@@ -36,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let response = await fetch("https://www.swapi.tech/api/people/") // completar la url deacuerdo a la API
 					let data = await response.json() // convertir picode a Json--> tipo de dato JS
 					console.log();
-					// for para recorrer 
+					// for para recorrwe
 					setStore({ characters: data.results }) // Guardar los personajes en el store, ,result porque la API muestra algo antes de consultar los personajes
 		
 				} catch (error) {
@@ -52,6 +58,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 					
 					setStore({ character: data.result.properties }) // Guardar los personajes en el store, ,result porque la API muestra algo antes de consultar los personajes
+					
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			loadPlanets: async () => {
+				try {
+					//la variable pasaria a ser una promesa por el fetch
+					let response = await fetch("https://www.swapi.tech/api/planets") // completar la url deacuerdo a la API
+					let data = await response.json() // convertir picode a Json--> tipo de dato JS
+					console.log();
+					// for para recorrer
+					setStore({ planets: data.results }) // Guardar los personajes en el store, ,result porque la API muestra algo antes de consultar los personajes
+		
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			loadPlanet: async (uid) => {
+				console.log(uid);
+				try {
+					//la variable pasaria a ser una promesa por el fetch
+					let response = await fetch(`https://www.swapi.tech/api/planets/${uid}`) // completar la url deacuerdo a la API
+					let data = await response.json() // convertir picode a Json--> tipo de dato JS
+					console.log(data);
+					
+					setStore({ planet: data.result.properties }) // Guardar los personajes en el store, ,result porque la API muestra algo antes de consultar los personajes
 					
 				} catch (error) {
 					console.log(error);
