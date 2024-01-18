@@ -9,8 +9,8 @@ const CharacterDetail = () => {
 
     const{uid} = useParams() // recuperar el id, lo puedo usar en el componente y pasarlo al useEffect
 
-    useEffect( () =>{
-        actions.loadCharacter(uid) // llmar la funcion del flux con el uid, esto va exclusivamnet al id
+    useEffect( () =>{ 
+        actions.loadCharacter(uid) // llamar la funcion del flux con el uid, esto va exclusivamnet al id
     }, [])
 
     console.log(store.character);
@@ -22,7 +22,7 @@ const CharacterDetail = () => {
             <div className="container text-center">
                 <div className="row justify-content-start">
                     <div className="col-4">
-                    <img src="https://www.tennrand.com/wp-content/uploads/2015/04/800x600.gif" className="card-img-top" alt="..."/>
+                    <img src={`https://starwars-visualguide.com/assets/img/characters/${uid}.jpg`} className="card-img-top" alt="..."/>
                     </div>
                 <div className="col-4">
                     <h1>{store.character.name}</h1>

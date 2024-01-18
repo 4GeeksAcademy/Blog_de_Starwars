@@ -25,6 +25,8 @@ const injectContext = PassedComponent => {
 			state.actions.loadCharacters(); // llamar la funcion loadCharacters
 			state.actions.loadCharacter();
 			state.actions.loadPlanets();
+			state.actions.loadPlanet();
+			state.actions.loadStarships();
 
 			/**
 			 * EDIT THIS!

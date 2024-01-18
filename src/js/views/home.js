@@ -2,6 +2,7 @@ import React from "react";
 import "../../styles/home.css";
 import Character from "../component/characters";
 import Planet from "../component/planets";
+import Starships from "../component/starships";
 
 export const Home = () => (
 	<div className="container">
@@ -20,6 +21,15 @@ export const Home = () => (
 		<div className={"scroll"} style={{display: 'flex', flexDirection: 'row', overflowX: 'auto'}}>
 			<Planet />
 		</div>
+
+		<div className="text-left mt-5">
+        	<h1 className="text-danger">Starships</h1>
+    	</div>
+
+		<div className={"scroll"} style={{display: 'flex', flexDirection: 'row', overflowX: 'auto'}}>
+			<Starships />
+		</div>
+		
 	</div>
 
 );
