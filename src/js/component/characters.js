@@ -26,7 +26,7 @@ const Character = () => {
                                {/* aca le paso el id del personaje y ahi sabe cual es */}
                             </div>
 
-                            <div>
+                            <div className="d-flex justify-content-between p-2">
                                 <Link to={`/characterDetail/${element.uid}` } className="btn btn-primary">Learn More</Link>
                                 <button className=" Favorites" onClick={() => actions.addFavorite(`character/${element.uid}`, element.name)}>Favorites</button>
                                                                             {/* importar actions */}

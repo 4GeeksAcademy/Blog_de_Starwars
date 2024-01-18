@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			urlBase: "https://www.swapi.tech/api/",
 			demo: [
 				{
 					title: "FIRST",
@@ -105,10 +106,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					//la variable pasaria a ser una promesa por el fetch
 					let response = await fetch("https://www.swapi.tech/api/starships") // completar la url deacuerdo a la API
 					let data = await response.json() // convertir picode a Json--> tipo de dato JS
-
-					console.log();
-					// for para recorrer
-					setStore({ starships: data.results }) // Guardar los personajes en el store ,result porque la API muestra algo antes de consultar los personajes
+						for(let element of data.results){
+							console.log(element, "forAdentro");
+							response = await fetch(element.url)
+							let data = await response.json()
+							setStore({ starships: [...getStore().starships, data.result] })
+						}
+					// console.log();
+					// // for para recorrer e
+					// setStore({ starships: data.results }) // Guardar los personajes en el store ,result porque la API muestra algo antes de consultar los personajes
 		
 				} catch (error) {
 					console.log(error);

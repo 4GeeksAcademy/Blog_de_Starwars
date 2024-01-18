@@ -30,10 +30,11 @@ const Starship = () => {
                 return (
                     <div className="container" key={element.uid}>
                         <div className="card" style={{ width: "18rem" }}>
-                            <img src={imageUrl} className="card-img-top" alt={element.model} />
+                            <img src={imageUrl} className="card-img-top" alt={element.model}  style={{ width: 'auto', height: '200px' }}/>
                             <div className="card-body">
                                 <h5 className="card-title"> {element.name}</h5>
-                                <p>ID: {element.uid}</p>
+                                <p>ID: {element.passengers}</p>
+                                <p>Model: {element.model}</p>
                                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                             <div> 
