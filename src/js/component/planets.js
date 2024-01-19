@@ -24,8 +24,8 @@ const Planet = () => {
                             </div>
                         
                             <div className="d-flex justify-content-between p-2">
-                                <Link to={`/planetDetail/${element.uid}` } className="btn btn-primary">Learn More</Link> 
-                                <button className="Favorites" onClick={() => actions.addFavorite(`planet/${element.uid}`, element.name)}>Favorites</button>
+                                <Link to={`/planetDetail/${element.uid}` } className="btn btn-outline-primary">Learn More</Link> 
+                                <button className="Favorites btn btn-outline-warning" onClick={() => actions.addFavorite(`planet/${element.uid}`, element.name)}>Favorites</button>
                             </div>
 
 

@@ -38,8 +38,8 @@ const Starship = () => {
                                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                             <div className="d-flex justify-content-between p-2">
-                                <Link to={`/starshipDetail/${element.uid}`} className="btn btn-primary">Learn More</Link>
-                                <button className=" Favorites" onClick={() => actions.addFavorite(`startship/${element.uid}`, element.name)}><i class="fa-regular fa-heart"></i></button> {/* importar actions */} </div>
+                                <Link to={`/starshipDetail/${element.uid}`} className="btn btn-outline-primary">Learn More</Link>
+                                <button className=" Favorites btn btn-outline-warning" onClick={() => actions.addFavorite(`startship/${element.uid}`, element.name)}><i class="fa-regular fa-heart"></i></button> {/* importar actions */} </div>
                             </div>
                     </div>
                 );
