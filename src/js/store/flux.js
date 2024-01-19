@@ -106,11 +106,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					//la variable pasaria a ser una promesa por el fetch
 					let response = await fetch("https://www.swapi.tech/api/starships") // completar la url deacuerdo a la API
 					let data = await response.json() // convertir picode a Json--> tipo de dato JS
+						setStore({starships:[]}) // limpio el store porque hay un elemento agregado
 						for(let element of data.results){
 							console.log(element, "forAdentro");
 							response = await fetch(element.url)
 							let data = await response.json()
-							setStore({ starships: [...getStore().starships, data.result] })
+							setStore({ //puedo cargar al objeto mas propiedades, poner al mismo nivel ... creando un nuevo objeto
+								starships: [...getStore().starships, {...data.result.properties, uid: data.result.uid}]
+							})
 						}
 					// console.log();
 					// // for para recorrer e

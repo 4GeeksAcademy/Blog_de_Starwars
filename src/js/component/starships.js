@@ -6,7 +6,7 @@ const Starship = () => {
     const { store, actions } = useContext(Context);
 
     console.log(store.starships, "nave solita");
-
+    
     let { uid } = useParams()
 
     //  USAR EL APP CONTEXT PARA TRAER LOS DATOS DE LA API
@@ -34,12 +34,12 @@ const Starship = () => {
                             <div className="card-body">
                                 <h5 className="card-title"> {element.name}</h5>
                                 <p>ID: {element.passengers}</p>
-                                <p>Model: {element.model}</p>
+                                <p>Model: {element.uid}</p>
                                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
-                            <div> 
+                            <div className="d-flex justify-content-between p-2">
                                 <Link to={`/starshipDetail/${element.uid}`} className="btn btn-primary">Learn More</Link>
-                                <button className=" Favorites" onClick={() => actions.addFavorite(`startship/${element.uid}`, element.name)}>Favorites</button> {/* importar actions */} </div>
+                                <button className=" Favorites" onClick={() => actions.addFavorite(`startship/${element.uid}`, element.name)}><i class="fa-regular fa-heart"></i></button> {/* importar actions */} </div>
                             </div>
                     </div>
                 );
