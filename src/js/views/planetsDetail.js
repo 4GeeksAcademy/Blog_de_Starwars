@@ -15,7 +15,7 @@ const PlanetDetail = () => {
         <div>
             
             <div>
-            <div className="container text-center">
+            <div className="container text-center" style={{color: "white"}}>
                 <div className="row justify-content-start">
                     <div className="col-4">
                         {uid == 1 ? 
@@ -29,7 +29,7 @@ const PlanetDetail = () => {
                 </div>
             </div>
         
-            <div className="container text-center">
+            <div className="container text-center" style={{color: "white"}}>
                 <div className="row align-items-center">
                     <div className="col">Name<p>{store.planet.name}</p></div>
                     <div className="col">Climate<p>{store.planet.climate}</p> </div>

@@ -16,14 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			characters: [
 				{
-					// name: "Luke",
-					// gender: "Male",
-					// eyeColor: "Blue"
-				},
-				{
-					// name: "Obi",
-					// gender: "Male",
-					// eyeColor: "Brown"
+					
 				}
 			],
 			character: {
@@ -52,21 +45,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let response = await fetch("https://www.swapi.tech/api/people/") // completar la url deacuerdo a la API
 					let data = await response.json() // convertir picode a Json--> tipo de dato JS
 					console.log();
-					// for para recorrwe
-					setStore({ characters: data.results }) // Guardar los personajes en el store, ,result porque la API muestra algo antes de consultar los personajes
+					setStore({characters:[]}) // limpio el store porque hay un elemento agregado
+					for(let element of data.results){
+						console.log(element, "forAdentro");
+						response = await fetch(element.url)
+						let data = await response.json()
+						setStore({ //puedo cargar al objeto mas propiedades, poner al mismo nivel ... creando un nuevo objeto
+							characters: [...getStore().characters, {...data.result.properties, uid: data.result.uid}]
+						})
+					}
+
+					// // for para recorrwe
+				// setStore({ characters: data.results }) // Guardar los personajes en el store, ,result porque la API muestra algo antes de consultar los personajes
 		
 				} catch (error) {
 					console.log(error);
 				}
 			},
 			loadCharacter: async (uid) => {
-				console.log(uid);
 				try {
 					//la variable pasaria a ser una promesa por el fetch
 					let response = await fetch(`https://www.swapi.tech/api/people/${uid}`) // completar la url deacuerdo a la API
 					let data = await response.json() // convertir picode a Json--> tipo de dato JS
-					console.log(data);
-					
 					setStore({ character: data.result.properties }) // Guardar los personajes en el store, ,result porque la API muestra algo antes de consultar los personajes
 					
 				} catch (error) {
@@ -78,11 +78,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					//la variable pasaria a ser una promesa por el fetch
 					let response = await fetch("https://www.swapi.tech/api/planets") // completar la url deacuerdo a la API
 					let data = await response.json() // convertir picode a Json--> tipo de dato JS
-
-					console.log();
-					// for para recorrer
-					setStore({ planets: data.results }) // Guardar los personajes en el store ,result porque la API muestra algo antes de consultar los personajes
-		
+						setStore({planets:[]}) // limpio el store porque hay un elemento agregado
+						for(let element of data.results){
+							console.log(element, "planetas adentro");
+							response = await fetch(element.url)
+							let data = await response.json()
+							setStore({ //puedo cargar al objeto mas propiedades, poner al mismo nivel ... creando un nuevo objeto
+								planets: [...getStore().planets, {...data.result.properties, uid: data.result.uid}]
+							})
+						}
 				} catch (error) {
 					console.log(error);
 				}

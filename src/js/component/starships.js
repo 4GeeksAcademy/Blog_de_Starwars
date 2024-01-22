@@ -18,7 +18,7 @@ const Starship = () => {
             {store.starships.map((element, index) => {
                 let imageUrl;
                 if (element.uid == 2) {
-                    imageUrl = "https://lh3.googleusercontent.com/proxy/E9Sg4PvCPMvpa6TPUhDFAu9206faxXE4qEfx4oumDVPE_DJJz4spunmqT3rVvg16jDtid50Vsjh4Kr1SpWJSs98YAGBcDUViMAIDQhfX";
+                    imageUrl = "https://lh3.googleusercontent.com/proxy/QQjUfwUcxht2hWhcPy54phImYaJT6eRcNpbjI69rL2ohyT8_ISRr5h-Xot7XhORoqRBCTa5ALY00hdvJbQgw4UTf5BQP90Kj8Mmn6vJ_avIE7cu6hTZpZ2_w0RA";
                 } else if (element.uid == 3) {
                     imageUrl = "https://static.wikia.nocookie.net/starwars/images/3/30/Executor_BF2.png/revision/latest?cb=20230405071103";
                 } else if (element.uid == 17) {
@@ -35,11 +35,11 @@ const Starship = () => {
                                 <h5 className="card-title"> {element.name}</h5>
                                 <p>ID: {element.passengers}</p>
                                 <p>Model: {element.uid}</p>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
                             </div>
                             <div className="d-flex justify-content-between p-2">
                                 <Link to={`/starshipDetail/${element.uid}`} className="btn btn-outline-primary">Learn More</Link>
-                                <button className=" Favorites btn btn-outline-warning" onClick={() => actions.addFavorite(`startship/${element.uid}`, element.name)}><i class="fa-regular fa-heart"></i></button> {/* importar actions */} </div>
+                                <button className=" Favorites btn btn-outline-warning" onClick={() => actions.addFavorite(element.uid, element.name)}><i className="fa-regular fa-heart"></i></button> {/* importar actions */} </div>
                             </div>
                     </div>
                 );

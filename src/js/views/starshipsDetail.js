@@ -13,7 +13,7 @@ const StarshipDetail = () => {
 
     let imageUrl;
     if (uid == 2) {
-        imageUrl = "https://lh3.googleusercontent.com/proxy/E9Sg4PvCPMvpa6TPUhDFAu9206faxXE4qEfx4oumDVPE_DJJz4spunmqT3rVvg16jDtid50Vsjh4Kr1SpWJSs98YAGBcDUViMAIDQhfX";
+        imageUrl = "https://lh3.googleusercontent.com/proxy/QQjUfwUcxht2hWhcPy54phImYaJT6eRcNpbjI69rL2ohyT8_ISRr5h-Xot7XhORoqRBCTa5ALY00hdvJbQgw4UTf5BQP90Kj8Mmn6vJ_avIE7cu6hTZpZ2_w0RA";
     } else if (uid == 3) {
         imageUrl = "https://static.wikia.nocookie.net/starwars/images/3/30/Executor_BF2.png/revision/latest?cb=20230405071103";
     } else if (uid == 17) {
@@ -25,14 +25,10 @@ const StarshipDetail = () => {
 
     return (
         <div>
-            <div className="container text-center">
+            <div className="container text-center" style={{color: "white"}}>
                 <div className="row justify-content-start">
                     <div className="col-4">
                     <img src={imageUrl} className="card-img-top" alt={store.starship.name} />
-                        {/* {uid == 2 ?
-                                <img src="https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png" className="card-img-top" alt={store.starship.name} /> :
-                                <img src={`https://starwars-visualguide.com/assets/img/planets/${uid}.jpg`} className="card-img-top" alt={store.starship.name} />
-                            } */}
                     </div>
                     <div className="col-4">
                         <h1>{store.starship.name}</h1>
@@ -40,7 +36,7 @@ const StarshipDetail = () => {
                 </div>
             </div>
 
-            <div className="container text-center">
+            <div className="container text-center" style={{color: "white"}}>
                 <div className="row align-items-center">
                     <div className="col">Model<p>{store.starship.model}</p></div>
                     <div className="col">Starship Class<p>{store.starship.starship_class}</p> </div>

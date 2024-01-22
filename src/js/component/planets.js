@@ -19,13 +19,15 @@ const Planet = () => {
                             <img src={`https://starwars-visualguide.com/assets/img/planets/${element.uid}.jpg`} className="card-img-top" alt={element.name} />
                         }
                             <div className="card-body">
-                                <h5 className="card-title"> {element.name}</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h5 className="card-title"> {element.Name}</h5>
+                                <p>Terrain : {element.terrain}</p>
+                                <p>Population : {element.population}</p>
+                                <p>Clima : {element.population}</p>
                             </div>
                         
                             <div className="d-flex justify-content-between p-2">
                                 <Link to={`/planetDetail/${element.uid}` } className="btn btn-outline-primary">Learn More</Link> 
-                                <button className="Favorites btn btn-outline-warning" onClick={() => actions.addFavorite(`planet/${element.uid}`, element.name)}>Favorites</button>
+                                <button className="Favorites btn btn-outline-warning" onClick={() => actions.addFavorite(element.uid, element.name)}><i className="fa-regular fa-heart"></i></button>
                             </div>
 
 
