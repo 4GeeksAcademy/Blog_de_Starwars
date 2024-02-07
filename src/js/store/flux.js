@@ -85,10 +85,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 			},
-			loadPlanets: async () => {
+			loadPlanets: async (urlNueva) => {
 				try {
+						let url = ""
+						if(urlNueva){
+							url = urlNueva
+						} else{
+							url = "https://www.swapi.tech/api/planets/"
+						}
 					//la variable pasaria a ser una promesa por el fetch
-					let response = await fetch("https://www.swapi.tech/api/planets") // completar la url deacuerdo a la API
+					let response = await fetch(url) // completar la url deacuerdo a la API
 					let data = await response.json() // convertir picode a Json--> tipo de dato JS
 						setStore({planets:[]}) // limpio el store porque hay un elemento agregado
 						for(let element of data.results){
@@ -99,6 +105,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 								planets: [...getStore().planets, {...data.result.properties, uid: data.result.uid}]
 							})
 						}
+					let newStore = getStore() // hacemos backup del store
+					//el data que reibo lo guardo en el store
+					setStore({... newStore, generalData: data}) 
 				} catch (error) {
 					console.log(error);
 				}
@@ -117,10 +126,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 			},
-			loadStarships: async () => {
+			loadStarships: async (urlNueva) => {
 				try {
+					let url = ""
+						if(urlNueva){
+							url = urlNueva
+						} else{
+							url = "https://www.swapi.tech/api/starships"
+						}
 					//la variable pasaria a ser una promesa por el fetch
-					let response = await fetch("https://www.swapi.tech/api/starships") // completar la url deacuerdo a la API
+					let response = await fetch(url) // completar la url deacuerdo a la API
 					let data = await response.json() // convertir picode a Json--> tipo de dato JS
 						setStore({starships:[]}) // limpio el store porque hay un elemento agregado
 						for(let element of data.results){
@@ -131,6 +146,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 								starships: [...getStore().starships, {...data.result.properties, uid: data.result.uid}]
 							})
 						}
+						let newStore = getStore() // hacemos backup del store
+						//el data que reibo lo guardo en el store
+						setStore({... newStore, generalData: data}) 
 					// console.log();
 					// // for para recorrer e
 					// setStore({ starships: data.results }) // Guardar los personajes en el store ,result porque la API muestra algo antes de consultar los personajes

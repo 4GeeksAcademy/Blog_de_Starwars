@@ -10,6 +10,9 @@ const Planet = () => {
 
     return(
         <div style={{ display: 'flex', flexDirection: 'row', overflowX: 'auto' }}>
+            {   //si hay un previous muestra el boton, esto esta almacenado en el store como data traido por el fetch y accedo a la propiedad previous
+                (store.generalData.previous && <button onClick={() => actions.loadPlanets(store.generalData.previous)}>Previous</button>)
+            }
             {store.planets.map((element, index) => {
                 return (
                     <div className="container" key={element.uid}>
@@ -36,6 +39,9 @@ const Planet = () => {
                 )
             }
             )}
+            {
+                (store.generalData.next && <button onClick={() => actions.loadPlanets(store.generalData.next)}>Next</button>)
+            }
         </div>
     )
 }

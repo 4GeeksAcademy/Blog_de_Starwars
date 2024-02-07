@@ -15,6 +15,9 @@ const Starship = () => {
     return (
 
         <div style={{ display: 'flex', flexDirection: 'row', overflowX: 'auto' }}>
+             {   //si hay un previous muestra el boton, esto esta almacenado en el store como data traido por el fetch y accedo a la propiedad previous
+                (store.generalData.previous && <button onClick={() => actions.loadStarships(store.generalData.previous)}>Previous</button>)
+            }
             {store.starships.map((element, index) => {
                 let imageUrl;
                 if (element.uid == 2) {
@@ -44,6 +47,9 @@ const Starship = () => {
                     </div>
                 );
             })}
+            {
+                (store.generalData.next && <button onClick={() => actions.loadStarships(store.generalData.next)}>Next</button>)
+            }
         </div>
     )
 }

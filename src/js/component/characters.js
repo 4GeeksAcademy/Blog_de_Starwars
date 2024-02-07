@@ -10,6 +10,9 @@ const Character = () => {
     return (
 
         <div style={{ display: 'flex', flexDirection: 'row', overflowX: 'auto' }}>
+            {   //si hay un previous muestra el boton, esto esta almacenado en el store como data traido por el fetch y accedo a la propiedad previous
+                (store.generalData.previous && <button onClick={() => actions.loadCharacters(store.generalData.previous)}>Previous</button>)
+            }
             {store.characters.map((element) => (
                 <div className="container" >
                     <div className="card" key={element.uid} style={{ width: "18rem" }}>
@@ -31,10 +34,7 @@ const Character = () => {
                     </div>  
                 </div>
             )
-            )}
-            {   //si hay un previous muestra el boton, esto esta almacenado en el store como data traido por el fetch y accedo a la propiedad previous
-                (store.generalData.previous && <button onClick={() => actions.loadCharacters(store.generalData.previous)}>Previous</button>)
-            }
+            )}           
             {
                 (store.generalData.next && <button onClick={() => actions.loadCharacters(store.generalData.next)}>Next</button>)
             }
