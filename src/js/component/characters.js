@@ -20,8 +20,6 @@ const Character = () => {
                             <p>Gender: {element.gender}</p>
                             <p>Height: {element.height}</p>
                             <p>Eye-Color: {element.eye_color}</p>
-                           
-                                
                             {/* aca le paso el id del personaje y ahi sabe cual es */}
                         </div>
 
@@ -30,10 +28,17 @@ const Character = () => {
                             <button className=" Favorites btn btn-outline-warning" onClick={() => actions.addFavorite(element.uid, element.name)}><i className="fa-regular fa-heart"></i></button>
                             {/* importar actions */}
                         </div>
-                    </div>
+                    </div>  
                 </div>
             )
             )}
+            {   //si hay un previous muestra el boton, esto esta almacenado en el store como data traido por el fetch y accedo a la propiedad previous
+                (store.generalData.previous && <button onClick={() => actions.loadCharacters(store.generalData.previous)}>Previous</button>)
+            }
+            {
+                (store.generalData.next && <button onClick={() => actions.loadCharacters(store.generalData.next)}>Next</button>)
+            }
+    
         </div>
     )
 }

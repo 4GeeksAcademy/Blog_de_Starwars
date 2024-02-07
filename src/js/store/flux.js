@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			generalData:{},
 			urlBase: "https://www.swapi.tech/api/",
 			demo: [
 				{
@@ -38,11 +39,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			}
 		},
+	
 		actions: {
-			loadCharacters: async () => {
+			loadCharacters: async (urlNueva) => {
 				try {
+					let url = ""
+					if(urlNueva){
+						url = urlNueva
+					} else{
+						url = "https://www.swapi.tech/api/people/"
+					}
+
 					//la variable pasaria a ser una promesa por el fetch
-					let response = await fetch("https://www.swapi.tech/api/people/") // completar la url deacuerdo a la API
+					let response = await fetch(url) // completar la url deacuerdo a la API
 					let data = await response.json() // convertir picode a Json--> tipo de dato JS
 					console.log();
 					setStore({characters:[]}) // limpio el store porque hay un elemento agregado
@@ -54,6 +63,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 							characters: [...getStore().characters, {...data.result.properties, uid: data.result.uid}]
 						})
 					}
+					let newStore = getStore() // hacemos backup del store
+					//el data que reibo lo guardo en el store
+					setStore({... newStore, generalData: data}) //guardar general data en el store, guardamos el primer paquete de pedido
 
 					// // for para recorrwe
 				// setStore({ characters: data.results }) // Guardar los personajes en el store, ,result porque la API muestra algo antes de consultar los personajes
